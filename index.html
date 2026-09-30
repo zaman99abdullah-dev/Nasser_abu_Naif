@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#F6F7F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1512" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="صحن ناصر">
+<title>صحن ناصر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"></noscript>
+<style>
+:root{
+  --ground:#F6F7F5;
+  --surface:#FFFFFF;
+  --surface-2:#EFF2EF;
+  --ink:#141D19;
+  --ink-2:#4A5952;
+  --muted:#7C8B84;
+  --line:#DCE3DE;
+  --line-2:#C5D0CA;
+  --accent:#14625A;
+  --accent-ink:#0C4A44;
+  --accent-wash:#E2EFEB;
+  --cost:#A8561C;
+  --cost-wash:#F6E9DD;
+  --ok:#14625A;
+  --warn:#A8561C;
+  --shadow:0 1px 2px rgba(20,29,25,.06),0 8px 24px -12px rgba(20,29,25,.18);
+  --bar-shadow:0 -8px 28px -14px rgba(20,29,25,.35);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1512;
+    --surface:#16201C;
+    --surface-2:#1D2924;
+    --ink:#E8EEEA;
+    --ink-2:#A9B8B1;
+    --muted:#7D8E86;
+    --line:#26332D;
+    --line-2:#33423B;
+    --accent:#5FBFA9;
+    --accent-ink:#8FD6C4;
+    --accent-wash:#16302B;
+    --cost:#D99356;
+    --cost-wash:#2E2117;
+    --ok:#5FBFA9;
+    --warn:#D99356;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+    --bar-shadow:0 -8px 28px -14px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1512;
+  --surface:#16201C;
+  --surface-2:#1D2924;
+  --ink:#E8EEEA;
+  --ink-2:#A9B8B1;
+  --muted:#7D8E86;
+  --line:#26332D;
+  --line-2:#33423B;
+  --accent:#5FBFA9;
+  --accent-ink:#8FD6C4;
+  --accent-wash:#16302B;
+  --cost:#D99356;
+  --cost-wash:#2E2117;
+  --ok:#5FBFA9;
+  --warn:#D99356;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  --bar-shadow:0 -8px 28px -14px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  direction:rtl;
+  max-width:560px;
+  margin:0 auto;
+  padding-inline:16px;
+  padding-block:0 132px;
+}
+.num{font-family:"IBM Plex Mono","IBM Plex Sans Arabic",monospace;font-variant-numeric:tabular-nums}
+
+/* ---------- head ---------- */
+.head{
+  padding-block:22px 18px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:22px;
+}
+.kicker{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;margin:0 0 6px;
+}
+h1{
+  font-size:26px;font-weight:700;letter-spacing:-.01em;
+  margin:0 0 12px;text-wrap:balance;
+}
+.rule{
+  display:flex;gap:8px;flex-wrap:wrap;
+}
+.rule b{
+  display:inline-flex;align-items:baseline;gap:5px;
+  background:var(--accent-wash);color:var(--accent-ink);
+  border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
+  border-radius:999px;padding:5px 12px;
+  font-size:13px;font-weight:600;
+}
+.rule b span{font-size:11px;font-weight:500;opacity:.75}
+
+/* ---------- meal ---------- */
+.meal{margin-bottom:26px}
+.meal-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:10px;margin-bottom:9px;
+}
+.meal-head h2{font-size:16px;font-weight:700;margin:0}
+.meal-head em{
+  font-style:normal;font-size:11.5px;color:var(--muted);
+  letter-spacing:.02em;
+}
+.opts{display:flex;flex-direction:column;gap:7px}
+
+.opt{
+  display:grid;
+  grid-template-columns:26px 1fr auto;
+  align-items:center;
+  gap:11px;
+  width:100%;
+  text-align:right;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:11px 12px;
+  color:inherit;font:inherit;
+  cursor:pointer;
+  transition:border-color .13s,background .13s,box-shadow .13s;
+}
+.opt:hover{border-color:var(--line-2)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt[aria-checked="true"]{
+  border-color:var(--accent);
+  background:var(--accent-wash);
+  box-shadow:var(--shadow);
+}
+.badge{
+  min-width:26px;height:26px;border-radius:8px;padding-inline:4px;
+  display:grid;place-items:center;white-space:nowrap;
+  background:var(--surface-2);color:var(--ink-2);
+  font-size:13px;font-weight:700;
+  transition:background .13s,color .13s;
+}
+.opt[aria-checked="true"] .badge{background:var(--accent);color:var(--surface)}
+:root[data-theme="dark"] .opt[aria-checked="true"] .badge,
+:root:not([data-theme="light"]) .opt[aria-checked="true"] .badge{color:#0E1512}
+.food{font-size:13.5px;line-height:1.5;color:var(--ink)}
+.food i{font-style:normal;font-weight:600}
+.vals{
+  display:flex;flex-direction:column;align-items:flex-start;
+  gap:1px;min-width:62px;
+}
+.vals .kc{font-size:15px;font-weight:600;color:var(--ink)}
+.vals .pr{font-size:11px;color:var(--muted);white-space:nowrap}
+
+/* fixed row */
+.fixed-row{
+  display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:11px;
+  background:var(--surface-2);border:1px dashed var(--line-2);
+  border-radius:11px;padding:11px 12px;
+}
+.fixed-row .badge{background:transparent;font-size:15px}
+
+/* ---------- trade-offs ---------- */
+.section-head{
+  margin:30px 0 4px;padding-top:22px;border-top:1px solid var(--line);
+}
+.section-head h2{font-size:17px;font-weight:700;margin:0 0 4px}
+.section-head p{margin:0;font-size:13px;color:var(--ink-2)}
+
+.trade{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:13px;margin-top:12px;
+}
+.trade h3{
+  font-size:13.5px;font-weight:700;margin:0 0 10px;color:var(--ink);
+}
+.tr-row{
+  display:grid;grid-template-columns:1fr auto auto;
+  gap:10px;align-items:center;
+  padding:8px 0;border-top:1px solid var(--line);
+  font-size:13px;
+}
+.tr-row:first-of-type{border-top:0}
+.tr-row .who{color:var(--ink-2)}
+.tr-row .p,.tr-row .k{min-width:52px;text-align:left;font-size:13px}
+.tr-row .p{font-weight:600}
+.tr-win .who,.tr-win .p{color:var(--accent-ink)}
+.tr-win .p::after{content:" ↑";font-size:11px}
+.verdict{
+  margin:10px 0 0;padding:9px 11px;border-radius:9px;
+  background:var(--accent-wash);color:var(--accent-ink);
+  font-size:12.5px;line-height:1.55;
+}
+.verdict.cost{background:var(--cost-wash);color:var(--cost)}
+.th{
+  display:grid;grid-template-columns:1fr auto auto;gap:10px;
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;padding-bottom:6px;
+}
+.th .p,.th .k{min-width:52px;text-align:left}
+
+/* ---------- rules ---------- */
+.rules{
+  display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--line);border:1px solid var(--line);
+  border-radius:12px;overflow:hidden;margin-top:12px;
+}
+.rules div{
+  display:flex;justify-content:space-between;gap:12px;
+  background:var(--surface);padding:10px 13px;font-size:13px;
+}
+.rules div span:last-child{font-weight:600;text-align:left;max-width:62%}
+.note{
+  margin-top:12px;padding:11px 13px;border-radius:10px;
+  background:var(--surface-2);border:1px solid var(--line);
+  font-size:12.5px;line-height:1.6;color:var(--ink-2);
+}
+.note b{color:var(--ink)}
+
+/* ---------- live bar ---------- */
+.bar{
+  position:fixed;inset-inline:0;bottom:0;
+  background:var(--surface);
+  border-top:1px solid var(--line-2);
+  box-shadow:var(--bar-shadow);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  z-index:20;
+}
+.bar-in{
+  direction:rtl;max-width:560px;margin:0 auto;
+  padding:11px 16px;
+  display:flex;align-items:center;gap:14px;
+}
+.stat{display:flex;flex-direction:column;gap:0;min-width:62px}
+.stat .lab{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .val{font-size:19px;font-weight:600;line-height:1.25;color:var(--ink)}
+.stat .val small{font-size:11px;font-weight:500;color:var(--muted);margin-inline-start:2px}
+.chip{
+  margin-inline-start:auto;
+  display:inline-flex;align-items:center;gap:6px;
+  border-radius:999px;padding:7px 13px;
+  font-size:12.5px;font-weight:600;white-space:nowrap;
+  background:var(--accent-wash);color:var(--ok);
+  border:1px solid color-mix(in srgb,var(--ok) 25%,transparent);
+}
+.chip.bad{background:var(--cost-wash);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+
+
+/* طريقة البيض، الأسابيع، الإضافات */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips[hidden]{display:none}
+.chips .lbl{font-size:11.5px;color:var(--muted);font-weight:600;align-self:center;margin-inline-end:2px}
+.cbtn{font:inherit;font-size:12.5px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);
+  border-radius:999px;padding:6px 11px;cursor:pointer;min-height:34px}
+.cbtn b{font-family:"IBM Plex Mono",monospace;font-weight:600;margin-inline-start:4px}
+.cbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+:root[data-theme="dark"] .cbtn[aria-pressed="true"],:root:not([data-theme="light"]) .cbtn[aria-pressed="true"]{color:#0E1512}
+.cbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.extras{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ex{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;background:var(--surface);padding:8px 12px}
+.ex .nm{font-size:13px}.ex .nm small{color:var(--muted);font-size:11.5px;margin-inline-start:6px}
+.stp{display:flex;align-items:center;gap:6px}
+.stp button{font:inherit;width:36px;height:36px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink);font-size:18px;cursor:pointer}
+.stp button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stp output{min-width:22px;text-align:center;font-family:"IBM Plex Mono",monospace;font-weight:600}
+.reset{margin-top:8px;font:inherit;font-size:12px;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;padding:6px 0}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:360px){
+  .opt{grid-template-columns:24px 1fr auto;gap:9px}
+  .food{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <noscript><div class="note" style="margin-top:16px"><b>الأزرار ما تشتغل بهالمعاينة.</b> افتح الملف بـ Safari أو Chrome عشان تختار وجباتك. الأرقام تحت ليوم: ريوق ج + غدا ب + سناك أ + عشا أ.</div></noscript>
+
+  <header class="head">
+    <p class="kicker">خطة أول أسبوعين — المراجعة يوم 14</p>
+    <h1>صحن ناصر</h1>
+    <div class="rule">
+      <b>175 <span>غ بروتين</span></b>
+      <b>1800 <span>سعرة مع الزيت</span></b>
+      <b>10,000 <span>خطوة</span></b>
+    </div>
+  </header>
+
+  <section class="meal" data-meal="riyoug">
+    <div class="meal-head"><h2>الريوق</h2><em>اختر واحداً</em></div>
+    <div class="opts" role="radiogroup" aria-label="الريوق"><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">أ</span><span class="food">3 بيضات، خبزة المطاحن الأسمر الخفيف، خيار وطماطم وخس وورقيات خضرة <i>— اختر طريقة البيض</i></span><span class="vals"><span class="kc num">424</span><span class="pr"><span class="num">29</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ب</span><span class="food">3 بيضات، علبة روب قليل الدسم 170 غ، خيار وطماطم وخس وورقيات خضرة <i>— اختر طريقة البيض</i></span><span class="vals"><span class="kc num">370</span><span class="pr"><span class="num">31</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="true"><span class="badge">ج</span><span class="food">100 غ صدر دجاج مشوي ببخّة زيت، خبزة المطاحن الأسمر الخفيف، خيار وطماطم وخس وورقيات خضرة</span><span class="vals"><span class="kc num">364</span><span class="pr"><span class="num">39</span> غ بروتين</span></span></button></div>
+    <div class="chips" id="eggs" role="group" aria-label="طريقة البيض" hidden=""><span class="lbl">طريقة البيض:</span><button type="button" class="cbtn" aria-pressed="true">مسلوق<b>0</b></button><button type="button" class="cbtn" aria-pressed="false">مقلي أو أومليت ببخّة زيت<b>+20</b></button><button type="button" class="cbtn" aria-pressed="false">مقلي بملعقة صغيرة زيت<b>+40</b></button><button type="button" class="cbtn" aria-pressed="false">أومليت بخضار بملعقة صغيرة<b>+61</b></button><button type="button" class="cbtn" aria-pressed="false">شكشوكة بملعقة صغيرة<b>+87</b></button></div>
+  </section>
+
+  <section class="meal" data-meal="ghada">
+    <div class="meal-head"><h2>الغدا بعد النادي</h2><em>اختر واحداً</em></div>
+    <div class="opts" role="radiogroup" aria-label="الغدا"><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">أ</span><span class="food">180 غ صدر دجاج بالفرن ببخّة زيت، 35 غ عيش جاف، 200 غ خضار مسلوقة</span><span class="vals"><span class="kc num">515</span><span class="pr"><span class="num">63</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="true"><span class="badge">ب</span><span class="food">160 غ صدر دجاج بالفرن ببخّة زيت، 130 غ عدس مسلوق، 200 غ خضار بروكلي وجزر مسلوقة</span><span class="vals"><span class="kc num">505</span><span class="pr"><span class="num">65</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ج</span><span class="food">240 غ سمج مشوي ببخّة زيت، 35 غ عيش جاف، 200 غ خضار مسلوقة</span><span class="vals"><span class="kc num">501</span><span class="pr"><span class="num">67</span> غ بروتين</span></span></button></div>
+    <div class="chips" id="fish-ghada" role="group" aria-label="نوع السمج" hidden=""><span class="lbl">السمج:</span><button type="button" class="cbtn" aria-pressed="true">هامور أو زبيدي أو شعري</button><button type="button" class="cbtn" aria-pressed="false">سالمون 140 غ</button></div>
+  </section>
+
+  <section class="meal" data-meal="snack">
+    <div class="meal-head"><h2>السناك</h2><em>اختر واحداً</em></div>
+    <div class="opts" role="radiogroup" aria-label="السناك"><button type="button" class="opt" role="radio" aria-checked="true"><span class="badge">أ</span><span class="food">علبة روب قليل الدسم 170 غ، بيضة مسلوقة</span><span class="vals"><span class="kc num">166</span><span class="pr"><span class="num">14</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ب</span><span class="food">100 غ نخي مسلوق، خيار</span><span class="vals"><span class="kc num">179</span><span class="pr"><span class="num">10</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ج</span><span class="food">علبة روب قليل الدسم 170 غ، تفاحة 150 غ</span><span class="vals"><span class="kc num">163</span><span class="pr"><span class="num">7</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">د</span><span class="food">علبة روب قليل الدسم 170 غ، حبتين تمر مكبوس (20 غ)</span><span class="vals"><span class="kc num">161</span><span class="pr"><span class="num">7</span> غ بروتين</span></span></button></div>
+  </section>
+
+  <section class="meal" data-meal="asha">
+    <div class="meal-head"><h2>العشا</h2><em>أكبر وجبة بيومك</em></div>
+    <div class="opts" role="radiogroup" aria-label="العشا"><button type="button" class="opt" role="radio" aria-checked="true"><span class="badge">أ</span><span class="food">250 غ سمج مشوي ببخّة زيت، 50 غ برغل جاف، سلطة بملعقة دبس رمان</span><span class="vals"><span class="kc num">587</span><span class="pr"><span class="num">70</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ب</span><span class="food">180 غ صدر دجاج بالفرن ببخّة زيت، 120 غ نخي مسلوق، سلطة بملعقة دبس رمان</span><span class="vals"><span class="kc num">615</span><span class="pr"><span class="num">69</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">ج</span><span class="food">250 غ سمج مشوي ببخّة زيت، 250 غ بطاطا حلوة مسلوقة، سلطة بملعقة دبس رمان</span><span class="vals"><span class="kc num">606</span><span class="pr"><span class="num">68</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">د</span><span class="food">200 غ لحم هبر (10٪ دهن) مشوي ببخّة زيت، 30 غ برغل جاف، سلطة بليمون</span><span class="vals"><span class="kc num">596</span><span class="pr"><span class="num">58</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">هـ</span><span class="food">180 غ صدر دجاج بالفرن ببخّة زيت، 120 غ حمص بالطحينة معلّب، خبزة المطاحن، سلطة بليمون</span><span class="vals"><span class="kc num">635</span><span class="pr"><span class="num">70</span> غ بروتين</span></span></button><button type="button" class="opt" role="radio" aria-checked="false"><span class="badge">✦</span><span class="food">العشاء المفتوح — سقفه 1150، مرة بالأسبوع</span><span class="vals"><span class="kc num">1150</span><span class="pr">بلا شروط</span></span></button></div>
+    <div class="chips" id="fish-asha" role="group" aria-label="نوع السمج"><span class="lbl">السمج:</span><button type="button" class="cbtn" aria-pressed="true">هامور أو زبيدي أو شعري</button><button type="button" class="cbtn" aria-pressed="false">سالمون 140 غ</button></div>
+  </section>
+
+  <section class="meal">
+    <div class="meal-head"><h2>الديوانية</h2><em>ثابتة كل يوم</em></div>
+    <div class="fixed-row">
+      <div class="badge">◆</div>
+      <div class="food"><span id="diwFood">20 غ لُبّ حب شمسي <i>(≈ 33 غ بالقشر)</i></span>، وچاي <i>بمحلّي</i> وقهوة عربية <i>بدون سكر</i></div>
+      <div class="vals"><span class="kc num" id="diwK">117</span><span class="pr"><span class="num" id="diwP">4</span> غ بروتين</span></div>
+    </div>
+    <div class="chips" id="diw" role="group" aria-label="رصيد الديوانية"><span class="lbl">رصيدك:</span><button type="button" class="cbtn" aria-pressed="true">20 غ حب<b>117</b></button><button type="button" class="cbtn" aria-pressed="false">حب + حبة تمر<b>97</b></button><button type="button" class="cbtn" aria-pressed="false">3 حبات تمر<b>115</b></button></div>
+    <div class="note"><b>الچاي بمحلّي والقهوة العربية بدون سكر = 1 إلى 2 سعرة.</b> والتمر المكبوس داخل رصيدك لو اخترت «حب + حبة تمر» أو «3 حبات تمر». أي حبة زيادة سجّلها تحت (+38)، ومثلها أي ملعقة سكر (+16).</div>
+  </section>
+
+  <section class="meal">
+    <div class="meal-head"><h2>إضافات اليوم</h2><em>أي شي زيادة عن المكتوب</em></div>
+    <div class="extras" id="extras"><div class="ex"><span class="nm">بخّة زيت (لحد 3 ثواني)<small>+20 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص بخّة زيت (لحد 3 ثواني)">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد بخّة زيت (لحد 3 ثواني)">+</button></span></div><div class="ex"><span class="nm">ملعقة قياس زيت أو سمن (5 مل)<small>+40 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص ملعقة قياس زيت أو سمن (5 مل)">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد ملعقة قياس زيت أو سمن (5 مل)">+</button></span></div><div class="ex"><span class="nm">ملعقة سكر مسطّحة (4 غ)<small>+16 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص ملعقة سكر مسطّحة (4 غ)">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد ملعقة سكر مسطّحة (4 غ)">+</button></span></div><div class="ex"><span class="nm">10 غ لُبّ حب زيادة (≈ 17 غ بالقشر)<small>+59 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص 10 غ لُبّ حب زيادة (≈ 17 غ بالقشر)">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد 10 غ لُبّ حب زيادة (≈ 17 غ بالقشر)">+</button></span></div><div class="ex"><span class="nm">حبة تمر مكبوس زيادة (10 غ)<small>+38 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص حبة تمر مكبوس زيادة (10 غ)">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد حبة تمر مكبوس زيادة (10 غ)">+</button></span></div><div class="ex"><span class="nm">ملعقة كبيرة حليب مبخّر بالچاي<small>+21 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص ملعقة كبيرة حليب مبخّر بالچاي">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد ملعقة كبيرة حليب مبخّر بالچاي">+</button></span></div><div class="ex"><span class="nm">ملعقة كبيرة دبس رمان<small>+60 سعرة</small></span><span class="stp"><button type="button" aria-label="أنقص ملعقة كبيرة دبس رمان">−</button><output aria-live="polite">0</output><button type="button" aria-label="زِد ملعقة كبيرة دبس رمان">+</button></span></div></div>
+    <button type="button" class="reset" id="reset">صفّر إضافات اليوم</button>
+  </section>
+
+  <div class="section-head">
+    <h2>المقايضات</h2>
+    <p>ما فيه شي ممنوع — بس كل اختيار له ثمن، والزيت داخل الرقم.</p>
+  </div>
+
+  <div class="trade">
+    <h3>بيض أو دجاج بالريوق؟</h3>
+    <div class="th"><span>&nbsp;</span><span class="p">بروتين</span><span class="k">سعرات</span></div>
+    <div class="tr-row"><span class="who">3 بيضات مسلوقة + خبزة</span><span class="p num">29 غ</span><span class="k num">424</span></div>
+    <div class="tr-row tr-win"><span class="who">100 غ دجاج + خبزة</span><span class="p num">39 غ</span><span class="k num">364</span></div>
+    <p class="verdict">الدجاج يعطيك <b>10 غ بروتين زيادة بـ60 سعرة أقل</b>. والبيض ألذّ وأسرع — لو أخذته، اختر له طريقة بلا زيت أو ببخّة.</p>
+  </div>
+
+  <div class="trade">
+    <h3>وطريقة البيض؟</h3>
+    <div class="th"><span>&nbsp;</span><span class="p">بروتين</span><span class="k">سعرات</span></div>
+    <div class="tr-row tr-win"><span class="who">3 بيضات مسلوقة</span><span class="p num">21 غ</span><span class="k num">245</span></div>
+    <div class="tr-row"><span class="who">3 بيضات شكشوكة بملعقة زيت</span><span class="p num">23 غ</span><span class="k num">332</span></div>
+    <p class="verdict cost">نفس البروتين تقريباً، وفرق <b>87 سعرة</b> — نص سناك. الشكشوكة مو ممنوعة، بس احسبها. والبخّة بدل الملعقة توفّر 20.</p>
+  </div>
+
+  <div class="trade">
+    <h3>سمج أو لحم بالعشا؟</h3>
+    <div class="th"><span>&nbsp;</span><span class="p">بروتين</span><span class="k">سعرات</span></div>
+    <div class="tr-row tr-win"><span class="who">250 غ سمج + برغل</span><span class="p num">70 غ</span><span class="k num">587</span></div>
+    <div class="tr-row"><span class="who">200 غ لحم هبر + برغل</span><span class="p num">58 غ</span><span class="k num">596</span></div>
+    <p class="verdict cost">السمج يعطيك <b>12 غ بروتين زيادة</b>، ومعه برغل أكثر ودبس رمان، بسعرات أقل. <b>لا يعني تترك اللحم</b> — يعني لو أكلته، خلّ الريوق دجاج.</p>
+  </div>
+
+  <div class="trade">
+    <h3>عيش أو عدس بالغدا؟</h3>
+    <div class="th"><span>&nbsp;</span><span class="p">بروتين</span><span class="k">ألياف</span></div>
+    <div class="tr-row"><span class="who">180 غ دجاج + عيش</span><span class="p num">63 غ</span><span class="k num">7 غ</span></div>
+    <div class="tr-row tr-win"><span class="who">160 غ دجاج + عدس</span><span class="p num">65 غ</span><span class="k num">17 غ</span></div>
+    <p class="verdict">العدس يعطيك <b>نفس البروتين تقريباً، و10 غ ألياف زيادة</b> بـ10 سعرات أقل — والألياف هذي تحل مشكلة الإخراج بدون دواء.</p>
+  </div>
+
+  <div class="trade">
+    <h3>أي علبة حمص من الجمعية؟</h3>
+    <div class="th"><span>لكل 100 غ</span><span class="p">دهن</span><span class="k">سعرات</span></div>
+    <div class="tr-row tr-win"><span class="who">كاليفورنيا جاردن — معلّب</span><span class="p num">3.1 غ</span><span class="k num">115</span></div>
+    <div class="tr-row"><span class="who">شتورة جاردن — معلّب</span><span class="p num">6.2 غ</span><span class="k num">134</span></div>
+    <div class="tr-row"><span class="who">الدرة — معلّب</span><span class="p num">7.5 غ</span><span class="k num">144</span></div>
+    <div class="tr-row"><span class="who">المراعي — مبرّد</span><span class="p num">14.0 غ</span><span class="k num">218</span></div>
+    <p class="verdict">نفس الاسم، وفرق <b>103 سعرات و11 غ دهن بكل 100 غ</b>. صحنك (120 غ) = <b>138 سعرة</b> من المعلّبة و<b>262</b> من المبرّدة.</p>
+    <p class="verdict cost"><b>القاعدة بأي علبة:</b> اقلبها واقرأ الدهن لكل 100 غ. <b>5 غ أو أقل ← خذها.</b> 6 إلى 9 غ ← خذ 100 غ بدل 120. 10 غ فما فوق ← رجّعها للرف، أو احسبها دهناً لا نشوية: 50 غ وبس.</p>
+  </div>
+
+  <div class="section-head">
+    <h2>قاعدة الوزن</h2>
+    <p>الغلط هنا يخرب كل الأرقام فوق.</p>
+  </div>
+
+  <div class="rules">
+    <div><span>الدجاج والسمج واللحم</span><span>بعد الطبخ</span></div>
+    <div><span>العيش والبرغل</span><span>قبل الطبخ — جاف</span></div>
+    <div><span>العدس والنخي</span><span>بعد الطبخ</span></div>
+    <div><span>الحمص بالطحينة المعلّب</span><span>كما يطلع من العلبة</span></div>
+    <div><span>الزيت</span><span>بخّة ≤ 3 ثواني (20) أو ملعقة قياس (40)</span></div>
+    <div><span>العيش والعدس والبرغل</span><span>بالماي — لو بتحمس بصل مو مشكلة، بس لا تضيف زيت</span></div>
+    <div><span>الخضار والسلطة</span><span>كمية مفتوحة — بدون زيت، غير البطاطس والذرة والبازلاء</span></div>
+  </div>
+
+  <div class="note">
+    <b>وانتبه: النخي غير الحمص بالطحينة.</b> النخي حبّ مسلوق وبروتينه <b>9.1 غ</b> لكل 100، والحمص المطحون <b>5.4 غ</b> — يعني ما ينوب واحد عن الثاني.
+  </div>
+
+</div>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="stat"><span class="lab">سعرات</span><span class="val num" id="kcal">1739</span></div>
+    <div class="stat"><span class="lab">بروتين</span><span class="val num" id="prot">192<small>غ</small></span></div>
+    <div class="stat"><span class="lab">ألياف</span><span class="val num" id="fib">33<small>غ</small></span></div>
+    <span class="chip" id="chip"><span class="dot"></span><span id="chipTxt">تمام — باقي 61</span></span>
+  </div>
+</div>
+
+<script>
+/* المصدر: أرقام خطة ناصر — كل رقم فيه زيت الطبخ المكتوب مع الطبخة.
+   USDA للأطعمة الخام، والملصقات للمنتجات الجاهزة (KDD، المطاحن، كاليفورنيا جاردن، الوادي). */
+const DATA = {"riyoug": [{"id": "أ", "food": "3 بيضات، خبزة المطاحن الأسمر الخفيف، خيار وطماطم وخس وورقيات خضرة", "k": 424, "p": 29.1, "f": 5.7, "egg": true}, {"id": "ب", "food": "3 بيضات، علبة روب قليل الدسم 170 غ، خيار وطماطم وخس وورقيات خضرة", "k": 370, "p": 30.8, "f": 2.6, "egg": true}, {"id": "ج", "food": "100 غ صدر دجاج مشوي ببخّة زيت، خبزة المطاحن الأسمر الخفيف، خيار وطماطم وخس وورقيات خضرة", "k": 364, "p": 38.6, "f": 5.7, "egg": false}], "ghada": [{"id": "أ", "food": "180 غ صدر دجاج بالفرن ببخّة زيت، 35 غ عيش جاف، 200 غ خضار مسلوقة", "k": 515, "p": 63.1, "f": 7.1, "egg": false}, {"id": "ب", "food": "160 غ صدر دجاج بالفرن ببخّة زيت، 130 غ عدس مسلوق، 200 غ خضار بروكلي وجزر مسلوقة", "k": 505, "p": 64.5, "f": 16.6, "egg": false}, {"id": "ج", "food": "240 غ سمج مشوي ببخّة زيت، 35 غ عيش جاف، 200 غ خضار مسلوقة", "k": 501, "p": 66.6, "f": 7.1, "egg": false, "salmon": {"food": "140 غ سالمون مشوي ببخّة زيت، 35 غ عيش جاف، 200 غ خضار مسلوقة", "k": 506, "p": 38.2, "f": 7.1}}], "snack": [{"id": "أ", "food": "علبة روب قليل الدسم 170 غ، بيضة مسلوقة", "k": 166, "p": 14.0, "f": 0.0, "egg": false}, {"id": "ب", "food": "100 غ نخي مسلوق، خيار", "k": 179, "p": 9.8, "f": 8.1, "egg": false}, {"id": "ج", "food": "علبة روب قليل الدسم 170 غ، تفاحة 150 غ", "k": 163, "p": 7.2, "f": 3.6, "egg": false}, {"id": "د", "food": "علبة روب قليل الدسم 170 غ، حبتين تمر مكبوس (20 غ)", "k": 161, "p": 7.2, "f": 1.4, "egg": false}], "asha": [{"id": "أ", "food": "250 غ سمج مشوي ببخّة زيت، 50 غ برغل جاف، سلطة بملعقة دبس رمان", "k": 587, "p": 70.2, "f": 9.4, "egg": false, "salmon": {"food": "140 غ سالمون مشوي ببخّة زيت، 50 غ برغل جاف، سلطة بملعقة دبس رمان", "k": 580, "p": 39.4, "f": 9.4}}, {"id": "ب", "food": "180 غ صدر دجاج بالفرن ببخّة زيت، 120 غ نخي مسلوق، سلطة بملعقة دبس رمان", "k": 615, "p": 69.0, "f": 12.3, "egg": false}, {"id": "ج", "food": "250 غ سمج مشوي ببخّة زيت، 250 غ بطاطا حلوة مسلوقة، سلطة بملعقة دبس رمان", "k": 606, "p": 67.6, "f": 9.4, "egg": false, "salmon": {"food": "140 غ سالمون مشوي ببخّة زيت، 250 غ بطاطا حلوة مسلوقة، سلطة بملعقة دبس رمان", "k": 599, "p": 36.8, "f": 9.4}}, {"id": "د", "food": "200 غ لحم هبر (10٪ دهن) مشوي ببخّة زيت، 30 غ برغل جاف، سلطة بليمون", "k": 596, "p": 58.0, "f": 6.9, "egg": false}, {"id": "هـ", "food": "180 غ صدر دجاج بالفرن ببخّة زيت، 120 غ حمص بالطحينة معلّب، خبزة المطاحن، سلطة بليمون", "k": 635, "p": 69.7, "f": 9.9, "egg": false}, {"id": "✦", "food": "العشاء المفتوح — سقفه 1150، مرة بالأسبوع", "k": 1150, "p": 0, "f": 0, "egg": false, "open": true}]};
+const EGGS = [{"id": "boiled", "name": "مسلوق", "k": 0, "p": 0, "f": 0}, {"id": "spray", "name": "مقلي أو أومليت ببخّة زيت", "k": 20, "p": 0.0, "f": 0.0}, {"id": "tsp", "name": "مقلي بملعقة صغيرة زيت", "k": 40, "p": 0.0, "f": 0.0}, {"id": "omelet", "name": "أومليت بخضار بملعقة صغيرة", "k": 61, "p": 0.8, "f": 1.1}, {"id": "shak", "name": "شكشوكة بملعقة صغيرة", "k": 87, "p": 1.9, "f": 2.7}];
+const DIWS = [{"id": "seeds", "name": "20 غ حب", "food": "20 غ لُبّ حب شمسي <i>(≈ 33 غ بالقشر)</i>", "k": 117.0, "p": 4.2, "f": 1.7}, {"id": "mix", "name": "حب + حبة تمر", "food": "10 غ لُبّ حب <i>(≈ 17 غ بالقشر)</i> + حبة تمر مكبوس <i>(10 غ)</i>", "k": 96.7, "p": 2.3, "f": 1.6}, {"id": "dates", "name": "3 حبات تمر", "food": "3 حبات تمر مكبوس <i>(30 غ)</i>", "k": 114.6, "p": 0.6, "f": 2.1}];
+const EXTRAS = [
+  {id:'spray', name:'بخّة زيت (لحد 3 ثواني)', k:20, p:0},
+  {id:'tsp',   name:'ملعقة قياس زيت أو سمن (5 مل)', k:40, p:0},
+  {id:'sugar', name:'ملعقة سكر مسطّحة (4 غ)', k:16, p:0},
+  {id:'seeds', name:'10 غ لُبّ حب زيادة (≈ 17 غ بالقشر)', k:59, p:2.1},
+  {id:'date',  name:'حبة تمر مكبوس زيادة (10 غ)', k:38, p:0.2},
+  {id:'milk',  name:'ملعقة كبيرة حليب مبخّر بالچاي', k:21, p:1.1},
+  {id:'dibs',  name:'ملعقة كبيرة دبس رمان', k:60, p:0}
+];
+const KEY = 'sahn-nasser-v3';
+const _d = new Date();
+const today = _d.getFullYear() + '-' + String(_d.getMonth()+1).padStart(2,'0') + '-' + String(_d.getDate()).padStart(2,'0');
+let S = {pick:{riyoug:2, ghada:1, snack:0, asha:0}, egg:'boiled', diw:'seeds', fish:{ghada:'white', asha:'white'}, ex:{}, day:today};
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved && saved.pick) {
+    S = Object.assign(S, saved);
+    S.fish = Object.assign({ghada:'white', asha:'white'}, saved.fish || {});
+    for (const key in DATA) if (!DATA[key][S.pick[key]]) S.pick[key] = 0;
+    if (saved.day !== today) {                                  // يوم جديد
+      S.ex = {}; S.day = today;                                 // الإضافات تنصفّر
+      if (DATA.asha[S.pick.asha].open) S.pick.asha = 0;         // والعشاء المفتوح ما ينسحب لليوم الثاني
+    }
+  }
+} catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+function diwSel(){ return DIWS.find(d => d.id === S.diw) || DIWS[0]; }
+function daysSince(a){ return Math.round((Date.parse(today) - Date.parse(a)) / 86400000); }
+function openTrack(isOpen){
+  if (isOpen){ if (S.openLast !== today){ S.openPrev = S.openLast || null; S.openLast = today; } }
+  else if (S.openLast === today){ S.openLast = S.openPrev || null; S.openPrev = null; }
+}
+const FISH = [{id:'white', name:'هامور أو زبيدي أو شعري'}, {id:'salmon', name:'سالمون 140 غ'}];
+function meal(key, i){                       // الخيار بعد نوع السمج
+  const o = DATA[key][i];
+  return (o.salmon && S.fish[key] === 'salmon') ? Object.assign({}, o, o.salmon) : o;
+}
+function eggAdd(){ return EGGS.find(e => e.id === S.egg) || EGGS[0]; }
+
+function renderMeals(){
+  for (const key in DATA){
+    const box = document.querySelector('[data-meal="'+key+'"] .opts');
+    box.innerHTML = '';
+    DATA[key].forEach((o0,i)=>{
+      const on = S.pick[key] === i;
+      const o = on ? meal(key, i) : o0;
+      const add = (o.egg && on) ? eggAdd().k : 0;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'opt';
+      b.setAttribute('role','radio'); b.setAttribute('aria-checked', on ? 'true' : 'false');
+      b.innerHTML =
+        '<span class="badge">'+o.id+'</span>'+
+        '<span class="food">'+o.food+(o.egg ? ' <i>— '+(on ? eggAdd().name : 'اختر طريقة البيض')+'</i>' : '')+'</span>'+
+        '<span class="vals"><span class="kc num">'+(o.k+add)+'</span>'+
+        (o.open ? '<span class="pr">بلا شروط</span></span>'
+                : '<span class="pr"><span class="num">'+Math.round(o.p)+'</span> غ بروتين</span></span>');
+      b.addEventListener('click', ()=>{ if (key === 'asha') openTrack(!!o.open); S.pick[key]=i; save(); render(); });
+      box.appendChild(b);
+    });
+  }
+}
+
+function chipRow(id, items, isOn, onPick, label){
+  const box = document.getElementById(id);
+  box.querySelectorAll('.cbtn').forEach(n => n.remove());
+  items.forEach((it, i)=>{
+    const c = document.createElement('button');
+    c.type = 'button'; c.className = 'cbtn';
+    c.setAttribute('aria-pressed', isOn(it, i) ? 'true' : 'false');
+    c.innerHTML = label(it);
+    c.addEventListener('click', ()=>{ onPick(it, i); save(); render(); });
+    box.appendChild(c);
+  });
+}
+
+function renderExtras(){
+  const box = document.getElementById('extras'); box.innerHTML = '';
+  EXTRAS.forEach(x=>{
+    const n = S.ex[x.id] || 0;
+    const row = document.createElement('div'); row.className = 'ex';
+    row.innerHTML = '<span class="nm">'+x.name+'<small>+'+x.k+' سعرة</small></span>'+
+      '<span class="stp"><button type="button" aria-label="أنقص '+x.name+'">−</button>'+
+      '<output aria-live="polite">'+n+'</output>'+
+      '<button type="button" aria-label="زِد '+x.name+'">+</button></span>';
+    const [minus, plus] = row.querySelectorAll('button');
+    minus.addEventListener('click', ()=>{ S.ex[x.id] = Math.max(0, n-1); save(); render(); });
+    plus.addEventListener('click',  ()=>{ S.ex[x.id] = n+1; save(); render(); });
+    box.appendChild(row);
+  });
+}
+
+function render(){
+  renderMeals();
+  const r = DATA.riyoug[S.pick.riyoug];
+  const eggBox = document.getElementById('eggs');
+  eggBox.hidden = !r.egg;
+  chipRow('eggs', EGGS, it => it.id === S.egg, it => { S.egg = it.id; },
+          it => it.name + (it.k ? '<b>+'+it.k+'</b>' : '<b>0</b>'));
+  chipRow('diw', DIWS, it => it.id === S.diw, it => { S.diw = it.id; },
+          it => it.name + '<b>'+Math.round(it.k)+'</b>');
+  const D = diwSel();
+  document.getElementById('diwFood').innerHTML = D.food;
+  document.getElementById('diwK').textContent = Math.round(D.k);
+  document.getElementById('diwP').textContent = Math.round(D.p);
+  for (const key of ['ghada', 'asha']){
+    const fb = document.getElementById('fish-'+key);
+    fb.hidden = !DATA[key][S.pick[key]].salmon;
+    chipRow('fish-'+key, FISH, it => it.id === S.fish[key], it => { S.fish[key] = it.id; }, it => it.name);
+  }
+  renderExtras();
+  total();
+}
+
+function total(){
+  const D = diwSel();
+  let k = D.k, p = D.p, f = D.f;
+  for (const key in DATA){ const o = meal(key, S.pick[key]); k += o.k; p += o.p; f += o.f;
+    if (o.egg){ const e = eggAdd(); k += e.k; p += e.p; f += e.f; } }
+  EXTRAS.forEach(x => { const n = S.ex[x.id] || 0; k += x.k * n; p += x.p * n; });
+  k = Math.round(k); p = Math.round(p);
+  document.getElementById('kcal').textContent = k;
+  const open = !!DATA.asha[S.pick.asha].open;
+  document.getElementById('prot').innerHTML = p + (open ? '+' : '') + '<small>غ</small>';
+  document.getElementById('fib').innerHTML  = Math.round(f)+'<small>غ</small>';
+  const chip = document.getElementById('chip'), txt = document.getElementById('chipTxt');
+  let msg, bad = true;
+  if (open) {
+    const n = S.openPrev ? daysSince(S.openPrev) : 99;
+    if (n < 7) msg = 'العشاء المفتوح مرة بالأسبوع — آخر مرة ' + (n === 1 ? 'أمس' : n === 2 ? 'قبل يومين' : 'قبل ' + n + ' أيام');
+    else { msg = 'يوم العشاء المفتوح — العشا لحد 1150'; bad = false; }
+  }
+  else if (p < 175)  msg = 'البروتين ناقص ' + (175 - p) + ' غ';
+  else if (k > 1800) msg = 'زايد ' + (k - 1800) + ' سعرة';
+  else { msg = 'تمام — باقي ' + (1800 - k); bad = false; }
+  chip.classList.toggle('bad', bad);
+  txt.textContent = msg;
+}
+
+document.getElementById('reset').addEventListener('click', ()=>{ S.ex = {}; save(); render(); });
+render();
+</script>
+</body>
+</html>
